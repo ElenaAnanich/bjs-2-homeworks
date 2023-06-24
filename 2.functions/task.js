@@ -1,14 +1,15 @@
 'use strict'
+
 function getArrayParams(...arr) {
   let min = Infinity;
-  let max =-Infinity;
-  let total =0;
-  for(let i=0;i<arr.length;i++){
-    if(arr[i]<min){
-      min=arr[i];
+  let max = -Infinity;
+  let total = 0;
+  for(let i=0; i<arr.length; i++){
+    if(arr[i]< min){
+      min = arr[i];
     }
-    if(arr[i]>max){
-      max=arr[i];
+    if(arr[i]> max){
+      max = arr[i];
   }
   total +=arr[i];
 }
@@ -54,7 +55,7 @@ function summElementsWorker(...arr) {
   function averageEvenElementsWorker(...arr) {
     let sumEnenElement =0;
     let countEvenElement =0;
-    for(let i=0;i<arr.length; i++){
+    for(let i=0; i<arr.length; i++){
       if(arr[i] % 2 ===0){
         sumEnenElement +=arr[i];
         countEvenElement ++;
