@@ -1,4 +1,5 @@
-"use strict"
+'use strict'
+
 function solveEquation(a, b, c) {
   let arr = [];
   
@@ -6,5 +7,6 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+  
   
 }
