@@ -11,7 +11,7 @@ class AlarmClock{
             throw new Error("Отсутствуют обязательные аргументы");
         }
 
-        if(this.alarmCollection.find(alarm => alarm.time ===time)){
+        if(this.alarmCollection.find(alarm => alarm.time === time)){
             console.warn("Уже присутствует звонок на это же время");
         }
 
@@ -28,18 +28,18 @@ class AlarmClock{
         const hours = now.getHours();
         const minutes = now.getMinutes();
 
-        return '$ {hours}: $ {minutes}';
+        return '${hours}:${minutes}';
     }
 
     start(){
         if(this.intervalId !== null){
             return;
         }
-        this.intervalId =setInterval(() =>{
+        this.intervalId = setInterval(() => {
                 const currentTime = this.getCurrentFormattedTime();
                 this.alarmCollection.forEach((alarm)=>{
                         if(alarm.time === currentTime && alarm.canCall){
-                            alarm.canCall =false;
+                            alarm.canCall = false;
                             alarm.callback();
                         }
                     }
@@ -48,11 +48,11 @@ class AlarmClock{
 
     stop(){
         clearInterval(this.intervalId);
-        this.intervalId =null;
+        this.intervalId = null;
     }
 
     resetAllCalls(){
-        this.alarmCollection.forEach((alarm)=>alarm.canCall =true);
+        this.alarmCollection.forEach((alarm)=> alarm.canCall = true);
     }
 
     clearAlarms(){
