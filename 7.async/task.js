@@ -23,12 +23,8 @@ class AlarmClock{
         this.alarmCollection = this.alarmCollection.filter(alarm =>alarm.time !==time);
     }
 
-    getCurrentFormattedTime(){
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-
-        return '${hours}:${minutes}';
+    getCurrentFormattedTime() {
+        return new Date().toTimeString().slice(0, 5);
     }
 
     start(){
