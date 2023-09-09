@@ -19,20 +19,24 @@ function solveEquation(a, b, c) {
 
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-   let totalAmount;
-		if (isNaN(percent)) {
-		return totalAmount = `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
-	} else if (isNaN(contribution)) {
-		return totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
-	} else if (isNaN(amount)) {
-		return totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
-	} 	
-	let returnAmountBank = amount - contribution;	
-	let date1 = new Date();	
-	let diff = Date.parse(date) - Date.parse(date1);
-	let creditTerm = Math.ceil(diff / 1000 / 60 / 60 / 24 / 30.5);	
-	let P = percent / 12 / 100;
-	let monthlyFee = returnAmountBank * (P + (P / (((1 + P) ** creditTerm) - 1)));
-			totalAmount = creditTerm * monthlyFee;				
-    return Number(totalAmount.toFixed(2));	
-}
+	let totalAmount = 0; 
+	let mounthPercent = (percent / 100) / 12;
+	let firstPayment = parseInt(contribution);
+	let objectPrice = parseInt(amount);
+	if (Number.isNaN(mounthPercent)){
+	  return totalAmount	= `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
+	} else if (Number.isNaN(firstPayment)){
+	  return totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;  
+	} else if (Number.isNaN(objectPrice)){
+	  return totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;  
+	  }
+		else {
+	let bodyCredit = objectPrice - firstPayment;
+	const dateNow = new Date();
+	const dateFuture = new Date(date);
+	let dateTerm = Math.floor((dateFuture - dateNow) / 1000 / 60 / 60 / 24 / 30); 
+	let payDay = bodyCredit * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** dateTerm) - 1)));
+	totalAmount = payDay * dateTerm;
+	return Number(totalAmount.toFixed(2));
+	  }
+	}
